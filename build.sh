@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 export MAIN=$(pwd)
-export VERSION=0.0.1
+export VERSION=0.0.2
 git tag -a ${VERSION} -m "Released ${VERSION}"
 cd ${MAIN}/images//vnc-in-a-bottle
 docker build -t ide-in-a-bottle:${VERSION} .
