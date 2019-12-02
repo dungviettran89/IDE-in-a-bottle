@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
-docker rm -f ide-in-a-bottle-vnc-dev || true
-docker build -t ide-in-a-bottle:next .
+docker rm -f ide-in-a-bottle-vnc-next || true
+docker build -t  ide-in-a-bottle-vnc:next .
 docker run --rm -t --sig-proxy=true \
     -e WIDTH=1280 \
     -e HEIGHT=720 \
-    --name ide-in-a-bottle-vnc-dev \
+    --name  ide-in-a-bottle-vnc-next \
     -p 26080:6080 \
-    ide-in-a-bottle:next
+     ide-in-a-bottle-vnc:next
