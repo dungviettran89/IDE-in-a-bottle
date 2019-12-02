@@ -1,2 +1,2 @@
-FROM ide-in-a-bottle:next
+FROM ide-in-a-bottle:latest
 RUN apk --update --no-cache add openjdk11-jdk
