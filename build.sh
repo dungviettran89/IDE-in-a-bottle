@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 export MAIN=$(pwd)
-export VERSION=0.0.3
+export VERSION=${VERSION:-0,0.1}
 cd ${MAIN}/images//vnc-in-a-bottle
 docker build -t ide-in-a-bottle:${VERSION} .
 docker tag ide-in-a-bottle:${VERSION} ide-in-a-bottle:latest
