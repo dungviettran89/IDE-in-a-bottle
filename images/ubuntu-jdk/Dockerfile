@@ -21,5 +21,6 @@ RUN useradd -m -s /bin/bash developer
 USER developer
 WORKDIR /home/developer
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "/app/entrypoint.sh"]
-
-
+ENV NOVNC_PORT 6080
+ENV VNC_PORT 5900
+ENV VNC_PASSWORD demo
