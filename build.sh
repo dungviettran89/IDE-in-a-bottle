@@ -7,7 +7,7 @@ mkdir -p ${MAIN}/build
 
 cd ${MAIN}/images/vnc-in-a-bottle
 docker build -t radiocuatoi/ide-in-a-bottle:${VERSION} .
-docker tag r:${VERSION} radiocuatoi/ide-in-a-bottle:latest
+docker tag radiocuatoi/ide-in-a-bottle:${VERSION} radiocuatoi/ide-in-a-bottle:latest
 docker save radiocuatoi/ide-in-a-bottle:${VERSION} | gzip > ${MAIN}/build/radiocuatoi/ide-in-a-bottle-${VERSION}.tar.gz
 
 cd ${MAIN}/images/jdk-in-a-bottle
