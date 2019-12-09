@@ -1,12 +1,13 @@
 FROM ubuntu:18.04
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
- && apt-get install -y xvfb x11vnc bash nano wget curl sudo dumb-init python3 python-pip \
+ && apt-get install -y xvfb x11vnc bash nano wget curl sudo dumb-init python3 python-pip ping nmap \
  && pip install numpy \
  && apt-get install -y fluxbox chromium-browser \
  && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
  && apt-get install -y git default-jdk nodejs \
  && apt-get clean
+RUN snap install intellij-idea-ultimate code
 WORKDIR /app/
 RUN git clone --depth 1 https://github.com/novnc/noVNC.git novnc \
  && git clone --depth 1 https://github.com/novnc/websockify novnc/utils/websockify \
