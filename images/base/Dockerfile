@@ -8,25 +8,28 @@ RUN apk --update --no-cache add \
  fluxbox xterm ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family chromium \
 #development packages
  git
-WORKDIR /vnc/
-RUN git clone --depth 1 https://github.com/novnc/noVNC.git novnc && \
-    git clone --depth 1 https://github.com/novnc/websockify novnc/utils/websockify && \
-    rm -rf novnc/.git && \
-    rm -rf novnc/utils/websockify/.git &&\
-    cd novnc &&\
-    cp vnc.html index.html
-ADD ./vnc/* /vnc/
-ADD ./vnc/root/.fluxbox* /vnc/root/.fluxbox
-ENTRYPOINT ["/usr/bin/dumb-init","--"]
-CMD ["/vnc/entrypoint.sh"]
+WORKDIR /app/
+RUN git clone --depth 1 https://github.com/novnc/noVNC.git novnc \
+ && git clone --depth 1 https://github.com/novnc/websockify novnc/utils/websockify \
+ && rm -rf novnc/.git \
+ && rm -rf novnc/utils/websockify/.git \
+ && cd novnc \
+ && cp vnc.html index.html
+ADD entrypoint.sh /app/
+RUN adduser -h /home/developer -s /bin/bash -G root -D developer  \
+ && chmod +x /app/*.sh \
+ && chmod 775 /app -R \
+ && chown developer:root /home/developer
+USER developer
+WORKDIR /home/developer
+ENTRYPOINT ["/usr/bin/dumb-init", "--", "/app/entrypoint.sh"]
 
 ENV WIDTH 1920
 ENV HEIGHT 1080
+ENV NOVNC_PORT 6080
 ENV VNC_PORT 5900
 ENV VNC_PASSWORD demo
-ENV NOVNC_PORT 6080
 ENV LANG en_GB.UTF-8
-ENV DESKTOP_USER developer
 
 EXPOSE 6080
 EXPOSE 5900

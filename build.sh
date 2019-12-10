@@ -5,7 +5,7 @@ export VERSION=${VERSION:-0,0.1}
 
 mkdir -p ${MAIN}/build
 
-cd ${MAIN}/images/vnc-in-a-bottle
+cd ${MAIN}/images/base
 docker build -t radiocuatoi/ide-in-a-bottle:${VERSION} .
 docker tag radiocuatoi/ide-in-a-bottle:${VERSION} radiocuatoi/ide-in-a-bottle:latest
 docker save radiocuatoi/ide-in-a-bottle:${VERSION} | gzip > ${MAIN}/build/ide-in-a-bottle-${VERSION}.tar.gz
