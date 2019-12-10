@@ -5,7 +5,5 @@ export CONTAINER=ide-in-a-bottle-next
 docker rm -f "$CONTAINER" || true
 docker run --rm -it \
  --name="$CONTAINER" \
- -e WIDTH=1280 \
- -e HEIGHT=720 \
  -p 16080:6080 \
  "$IMAGE"

@@ -5,7 +5,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && pip install numpy \
  && apt-get install -y fluxbox chromium-browser \
  && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
- && apt-get install -y git default-jdk nodejs \
+ && apt-get install -y git default-jdk nodejs mysql-client mysql-server \
  && apt-get clean
 WORKDIR /app/
 RUN git clone --depth 1 https://github.com/novnc/noVNC.git novnc \

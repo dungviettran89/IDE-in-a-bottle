@@ -3,9 +3,9 @@ RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repo
 RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 RUN apk --update --no-cache add \
 #noVNC packages
- python py-numpy@edge x11vnc xvfb sudo wget curl ca-certificates npm nodejs dumb-init procps bash \
+ python py-numpy@edge x11vnc xvfb sudo wget curl ca-certificates npm nodejs dumb-init procps bash nano \
 #desktop packages
- fluxbox xterm ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family chromium \
+ fluxbox xterm ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family chromium firefox-esr \
 #development packages
  git
 WORKDIR /app/
