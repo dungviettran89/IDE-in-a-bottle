@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
- && apt-get install -y xvfb x11vnc bash nano wget curl sudo dumb-init python3 python-pip inetutils-ping nmap \
+ && apt-get install -y xvfb x11vnc xrandr bash nano wget curl sudo dumb-init python3 python-pip inetutils-ping nmap \
  && pip install numpy \
  && apt-get install -y fluxbox chromium-browser \
  && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
@@ -15,6 +15,7 @@ RUN git clone --depth 1 https://github.com/novnc/noVNC.git novnc \
  && cd novnc \
  && cp vnc.html index.html
 ADD entrypoint.sh /app/
+ADD flexible.html /app/novnc/flexible.html
 RUN chmod +x /app/*.sh \
  && chmod 775 /app -R
 RUN useradd -m -s /bin/bash developer

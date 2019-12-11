@@ -3,7 +3,7 @@ RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repo
 RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 RUN apk --update --no-cache add \
 #noVNC packages
- python py-numpy@edge x11vnc xvfb sudo wget curl ca-certificates npm nodejs dumb-init procps bash nano \
+ python py-numpy@edge x11vnc xvfb xrandr sudo wget curl ca-certificates npm nodejs dumb-init procps bash nano openssh \
 #desktop packages
  fluxbox xterm ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family chromium firefox-esr \
 #development packages
@@ -16,6 +16,7 @@ RUN git clone --depth 1 https://github.com/novnc/noVNC.git novnc \
  && cd novnc \
  && cp vnc.html index.html
 ADD entrypoint.sh /app/
+ADD flexible.html /app/novnc/flexible.html
 RUN adduser -h /home/developer -s /bin/bash -G root -D developer  \
  && chmod +x /app/*.sh \
  && chmod 775 /app -R \
