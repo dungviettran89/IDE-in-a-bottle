@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
- && apt-get install -y xvfb x11vnc xrandr bash nano wget curl sudo dumb-init python3 python-pip inetutils-ping nmap \
+ && apt-get install -y xvfb x11vnc x11-xserver-utils bash nano wget curl sudo dumb-init python3 python-pip inetutils-ping nmap \
  && pip install numpy \
  && apt-get install -y fluxbox chromium-browser \
  && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
