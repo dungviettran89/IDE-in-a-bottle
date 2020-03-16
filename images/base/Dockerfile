@@ -1,9 +1,7 @@
 FROM alpine:latest
-RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
-RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 RUN apk --update --no-cache add \
 #noVNC packages
- python py-numpy@edge x11vnc xvfb xrandr sudo wget curl ca-certificates npm nodejs dumb-init procps bash nano openssh \
+ python x11vnc xvfb xrandr sudo wget curl ca-certificates npm nodejs dumb-init procps bash nano openssh \
 #desktop packages
  fluxbox xterm ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family chromium firefox-esr \
 #development packages
