@@ -26,7 +26,7 @@ mkdir -p ~/.fluxbox/
 cat <<EOT > ~/.fluxbox/menu
 [begin] (fluxbox)
 [exec] (Chrome) {/usr/bin/chromium-browser --no-gpu --no-sandbox --disable-dev-shm-usage --disable-web-security} <>
-[exec] (Intellij IDEA) {/app/idea*/bin/idea.sh} <>
+[exec] (Intellij IDEA) {~/idea*/bin/idea.sh} <>
 [end]
 EOT
 

@@ -8,7 +8,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get install -y git default-jdk nodejs mysql-client mysql-server \
  && apt-get clean
 WORKDIR /app/
-RUN wget -qO- https://download.jetbrains.com/idea/ideaIU-2019.3.3.tar.gz | tar -xzf -
 RUN git clone --depth 1 https://github.com/novnc/noVNC.git novnc \
  && git clone --depth 1 https://github.com/novnc/websockify novnc/utils/websockify \
  && rm -rf novnc/.git \
@@ -22,6 +21,7 @@ RUN chmod +x /app/*.sh \
 RUN useradd -m -s /bin/bash developer
 USER developer
 WORKDIR /home/developer
+RUN wget -qO- https://download.jetbrains.com/idea/ideaIU-2019.3.3.tar.gz | tar -xzf -
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "/app/entrypoint.sh"]
 
 ENV NOVNC_PORT 6080
