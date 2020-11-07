@@ -1,7 +1,7 @@
 FROM alpine:latest
 RUN apk --update --no-cache add \
 #noVNC packages
- python x11vnc xvfb xrandr sudo wget curl ca-certificates npm nodejs dumb-init procps bash nano openssh \
+ python3 x11vnc xvfb xrandr sudo wget curl ca-certificates npm nodejs dumb-init procps bash nano openssh \
 #desktop packages
  fluxbox xterm ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family chromium firefox-esr \
 #development packages
