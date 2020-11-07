@@ -28,5 +28,5 @@ EOT
 fi
 
 echo "Starting development environment"
-/usr/bin/tigervncserver :99 -httpPort ${VNC_PORT} -passwd ~/.vnc/passwd  -xstartup fluxbox -geometry "${WIDTH}x${HEIGHT}"
+/usr/bin/tigervncserver :99 -passwd ~/.vnc/passwd  -nevershared -localhost no -xstartup fluxbox -geometry "${WIDTH}x${HEIGHT}"
 /app/novnc/utils/launch.sh --listen ${NOVNC_PORT} --vnc localhost:${VNC_PORT} > /tmp/novnc.log
