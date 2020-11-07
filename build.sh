@@ -2,6 +2,7 @@
 set -e
 export MAIN=$(pwd)
 export VERSION=${VERSION:-0,0.1}
+git tag -a ${VERSION} -m "Released ${VERSION}"
 
 mkdir -p ${MAIN}/build
 
@@ -32,5 +33,4 @@ docker push radiocuatoi/ide-in-a-bottle:${VERSION}-ubuntu-jdk
 docker push radiocuatoi/ide-in-a-bottle:latest-ubuntu-jdk
 docker push radiocuatoi/ide-in-a-bottle:latest
 
-git tag -a ${VERSION} -m "Released ${VERSION}"
 git push --tags
