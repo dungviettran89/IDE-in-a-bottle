@@ -13,7 +13,7 @@ mkdir -p ~/.vnc/
 rm -rf ~/.vnc/*
 echo "${VNC_PASSWORD}" | /usr/bin/tigervncpasswd -f > ~/.vnc/passwd
 
-if [ ! -d "~/.fluxbox/" ]; then
+if [ ! -d ~/.fluxbox/ ]; then
   mkdir -p ~/.fluxbox/
   cat <<EOT > ~/.fluxbox/menu
 [begin] (fluxbox)
