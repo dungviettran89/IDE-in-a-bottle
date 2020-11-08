@@ -14,6 +14,7 @@ echo "VNC_PASSWORD=${VNC_PASSWORD}"
 echo "LANG=${LANG}"
 
 mkdir -p ~/.vnc/
+rm -rf ~/.vnc/*
 echo "${VNC_PASSWORD}" | /usr/bin/tigervncpasswd -f > ~/.vnc/passwd
 
 if [ ! -d "~/.fluxbox/" ]; then
@@ -28,5 +29,6 @@ EOT
 fi
 
 echo "Starting development environment"
-/usr/bin/tigervncserver :99 -passwd ~/.vnc/passwd  -nevershared -localhost no -xstartup fluxbox -geometry "${WIDTH}x${HEIGHT}"
+/usr/bin/tigervncserver :99 -cleanstale -passwd ~/.vnc/passwd  -nevershared -localhost no -xstartup fluxbox -geometry "${WIDTH}x${HEIGHT}"
+tail -f ~/.vnc/*.log &
 /app/novnc/utils/launch.sh --listen ${NOVNC_PORT} --vnc localhost:${VNC_PORT} > /tmp/novnc.log
