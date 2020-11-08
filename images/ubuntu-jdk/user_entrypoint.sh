@@ -5,13 +5,9 @@ export NOVNC_PORT=${NOVNC_PORT:-6080}
 export VNC_PORT=${VNC_PORT:-5999}
 export VNC_PASSWORD=${VNC_PASSWORD:-demo}
 export LANG=${LANG:-en_GB.UTF-8}
+export LC_ALL=${LC_ALL:C}
 export DISPLAY=:99
-echo "WIDTH=${WIDTH}"
-echo "HEIGHT=${HEIGHT}"
-echo "NOVNC_PORT=${NOVNC_PORT}"
-echo "VNC_PORT=${VNC_PORT}"
-echo "VNC_PASSWORD=${VNC_PASSWORD}"
-echo "LANG=${LANG}"
+env
 
 mkdir -p ~/.vnc/
 rm -rf ~/.vnc/*
