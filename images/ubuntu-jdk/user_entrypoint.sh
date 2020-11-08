@@ -5,7 +5,7 @@ export NOVNC_PORT=${NOVNC_PORT:-6080}
 export VNC_PORT=${VNC_PORT:-5999}
 export VNC_PASSWORD=${VNC_PASSWORD:-demo}
 export LANG=${LANG:-en_GB.UTF-8}
-export LC_ALL=${LC_ALL:C}
+export LC_ALL=${LC_ALL:-C}
 export DISPLAY=:99
 env
 
