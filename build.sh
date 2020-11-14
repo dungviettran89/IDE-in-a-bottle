@@ -13,21 +13,29 @@ cd ${MAIN}/images/jdk
 docker build -t radiocuatoi/ide-in-a-bottle:${VERSION}-jdk .
 docker tag radiocuatoi/ide-in-a-bottle:${VERSION}-jdk radiocuatoi/ide-in-a-bottle:latest-jdk
 
+cd ${MAIN}/images/novnc
+docker build -t radiocuatoi/ide-in-a-bottle:${VERSION}-novnc .
+docker tag radiocuatoi/ide-in-a-bottle:${VERSION}-novnc radiocuatoi/ide-in-a-bottle:latest-novnc
+
 cd ${MAIN}/images/ubuntu-jdk
 docker build -t radiocuatoi/ide-in-a-bottle:${VERSION}-ubuntu-jdk .
 docker tag radiocuatoi/ide-in-a-bottle:${VERSION}-ubuntu-jdk radiocuatoi/ide-in-a-bottle:latest-ubuntu-jdk
 
 git tag -a ${VERSION} -m "Released ${VERSION}"
 echo "Exporting radiocuatoi/ide-in-a-bottle:${VERSION}"
-docker save radiocuatoi/ide-in-a-bottle:${VERSION} | gzip > ${MAIN}/build/ide-in-a-bottle-${VERSION}.tar.gz
+#docker save radiocuatoi/ide-in-a-bottle:${VERSION} | gzip > ${MAIN}/build/ide-in-a-bottle-${VERSION}.tar.gz
 docker push radiocuatoi/ide-in-a-bottle:${VERSION}
 docker push radiocuatoi/ide-in-a-bottle:latest
 echo "Exporting radiocuatoi/ide-in-a-bottle:${VERSION}-jdk"
-docker save radiocuatoi/ide-in-a-bottle:${VERSION}-jdk | gzip > ${MAIN}/build/ide-in-a-bottle-${VERSION}-jdk.tar.gz
+#docker save radiocuatoi/ide-in-a-bottle:${VERSION}-jdk | gzip > ${MAIN}/build/ide-in-a-bottle-${VERSION}-jdk.tar.gz
 docker push radiocuatoi/ide-in-a-bottle:${VERSION}-jdk
 docker push radiocuatoi/ide-in-a-bottle:latest-jdk
+echo "Exporting radiocuatoi/ide-in-a-bottle:${VERSION}-novnc"
+#docker save radiocuatoi/ide-in-a-bottle:${VERSION}-novnc | gzip > ${MAIN}/build/ide-in-a-bottle-${VERSION}-novnc.tar.gz
+docker push radiocuatoi/ide-in-a-bottle:${VERSION}-novnc
+docker push radiocuatoi/ide-in-a-bottle:latest-novnc
 echo "Exporting radiocuatoi/ide-in-a-bottle:${VERSION}-ubuntu-jdk"
-docker save radiocuatoi/ide-in-a-bottle:${VERSION}-ubuntu-jdk | gzip > ${MAIN}/build/ide-in-a-bottle-${VERSION}-ubuntu-jdk.tar.gz
+#docker save radiocuatoi/ide-in-a-bottle:${VERSION}-ubuntu-jdk | gzip > ${MAIN}/build/ide-in-a-bottle-${VERSION}-ubuntu-jdk.tar.gz
 docker push radiocuatoi/ide-in-a-bottle:${VERSION}-ubuntu-jdk
 docker push radiocuatoi/ide-in-a-bottle:latest-ubuntu-jdk
 
