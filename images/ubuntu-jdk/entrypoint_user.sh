@@ -16,6 +16,7 @@ if [ ! -d ~/.fluxbox/ ]; then
   cat <<EOT > ~/.fluxbox/menu
 [begin] (fluxbox)
 [exec] (Chrome) {/usr/bin/chromium-browser --no-gpu --no-sandbox --disable-dev-shm-usage --disable-web-security} <>
+[exec] (Firefox) {/usr/bin/firefox} <>
 [exec] (Intellij IDEA) {/app/idea*/bin/idea.sh} <>
 [include] (/etc/X11/fluxbox/fluxbox-menu)
 [end]
@@ -27,6 +28,6 @@ fi
 echo "Starting environment"
 /usr/bin/x11vnc -xkb -noxrecord -noxfixes -noxdamage -nevershared -forever -create \
   -env X11VNC_CREATE_GEOM=${WIDTH}x${HEIGHT}x24 \
-  -env FD_PROG=/usr/bin/fluxbox \
+  -env FD_PROG=/usr/bin/startfluxbox \
   -rfbport "${VNC_PORT}" \
   -passwd "${VNC_PASSWORD}"

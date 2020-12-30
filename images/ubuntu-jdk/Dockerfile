@@ -12,15 +12,19 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
     node -v  &&\
     docker -v
 WORKDIR /app/
-RUN wget -qO- https://download.jetbrains.com/idea/ideaIU-2020.2.3.tar.gz | tar -xzf -
-RUN curl -sL "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/bin/kubectl \
- && chmod +x /usr/bin/kubectl
-RUN curl -sL "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose \
- && chmod +x /usr/bin/docker-compose
+RUN wget -qO- https://download.jetbrains.com/idea/ideaIU-2020.2.3.tar.gz | tar -xzf - &&\
+    curl -sL "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/bin/kubectl &&\
+    chmod +x /usr/bin/kubectl &&\
+    curl -sL "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose &&\
+    chmod +x /usr/bin/docker-compose &&\
+    curl https://dl.min.io/client/mc/release/linux-amd64/mc -o /usr/bin/mc &&\
+    chmod +x /usr/bin/mc &&\
+    mc --help
+
 #Desktop software (no VNC please)
 RUN export DEBIAN_FRONTEND=noninteractive &&\
     apt-get update &&\
-    apt-get install -y xvfb x11vnc bash nano sudo xterm fluxbox chromium-browser x11-xserver-utils
+    apt-get install -y xvfb x11vnc bash nano sudo xterm fluxbox chromium-browser x11-xserver-utils firefox
 #Prepare user
 RUN useradd -m -s /bin/bash developer &&\
     echo -n 'developer:developer' | chpasswd &&\
