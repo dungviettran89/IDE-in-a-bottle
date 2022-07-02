@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 #Development software first because it rarely change
 RUN export DEBIAN_FRONTEND=noninteractive &&\
     apt-get update &&\
