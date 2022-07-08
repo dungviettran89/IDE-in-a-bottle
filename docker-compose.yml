@@ -1,0 +1,11 @@
+services:
+  desktop:
+    build: ./images/ubuntu-jdk
+    ports:
+      - "8000:5000"
+  novnc:
+    build: ./images/novnc
+    environment:
+      VNC_HOST: desktop
+    ports:
+    - "6080:6080"

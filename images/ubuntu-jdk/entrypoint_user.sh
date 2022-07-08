@@ -15,7 +15,7 @@ if [ ! -d ~/.fluxbox/ ]; then
   mkdir -p ~/.fluxbox/
   cat <<EOT > ~/.fluxbox/menu
 [begin] (fluxbox)
-[exec] (Chrome) {/usr/bin/chromium-browser --no-gpu --no-sandbox --disable-dev-shm-usage --disable-web-security} <>
+[exec] (Chrome) {/usr/bin/google-chrome --no-gpu --no-sandbox --disable-dev-shm-usage --disable-web-security} <>
 [exec] (Firefox) {/usr/bin/firefox} <>
 [exec] (Intellij IDEA) {/app/idea*/bin/idea.sh} <>
 [include] (/etc/X11/fluxbox/fluxbox-menu)

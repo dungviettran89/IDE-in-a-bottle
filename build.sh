@@ -8,10 +8,12 @@ mkdir -p ${MAIN}/build
 cd ${MAIN}/images/ubuntu-jdk
 docker build -t radiocuatoi/ide-in-a-bottle:${VERSION} .
 docker tag radiocuatoi/ide-in-a-bottle:${VERSION} radiocuatoi/ide-in-a-bottle:latest
+docker tag radiocuatoi/ide-in-a-bottle:${VERSION} radiocuatoi/ide-in-a-bottle:dev
 
 cd ${MAIN}/images/novnc
 docker build -t radiocuatoi/ide-in-a-bottle:${VERSION}-novnc .
 docker tag radiocuatoi/ide-in-a-bottle:${VERSION}-novnc radiocuatoi/ide-in-a-bottle:latest-novnc
+docker tag radiocuatoi/ide-in-a-bottle:${VERSION}-novnc radiocuatoi/ide-in-a-bottle:dev-novnc
 
 if [ "$VERSION" = "0.0.1" ]; then
   echo "Will not push development version"

@@ -22,9 +22,11 @@ RUN wget -qO- https://download.jetbrains.com/idea/ideaIU-2020.2.3.tar.gz | tar -
     mc --help
 
 #Desktop software (no VNC please)
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 RUN export DEBIAN_FRONTEND=noninteractive &&\
     apt-get update &&\
-    apt-get install -y xvfb x11vnc bash nano sudo xterm fluxbox chromium-browser x11-xserver-utils firefox
+    apt-get install -y xvfb x11vnc bash nano sudo xterm fluxbox google-chrome-stable x11-xserver-utils firefox
 #Prepare user
 RUN useradd -m -s /bin/bash developer &&\
     echo -n 'developer:developer' | chpasswd &&\
