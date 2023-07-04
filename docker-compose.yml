@@ -1,11 +1,13 @@
 services:
   desktop:
-    build: ./images/ubuntu-jdk
+    build: ./images/ubuntu-xfce
+    privileged: true
+    tty: true
     ports:
-      - "8000:5000"
+      - "45900:5900"
   novnc:
     build: ./images/novnc
     environment:
       VNC_HOST: desktop
     ports:
-    - "6080:6080"
+    - "46080:6080"
